@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#Script that kill a process of task 7
+pgrep -f 7-highlander | xargs kill -9

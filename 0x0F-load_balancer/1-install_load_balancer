@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Install HAProxy 2.0 from the official repository
+sudo apt-get -y install haproxy
+
+# Configure HAProxy
+sudo tee -a /etc/haproxy/haproxy.cfg <<EOF
+frontend http
+    bind *:80
+    mode http
+    default_backend web-backend
+
+backend web-backend
+    balance roundrobin
+    server 354632-web-01 54.162.36.27:80 check
+    server 354632-web-02 52.3.246.49:80 check
+EOF
+
+# Restart HAProxy service
+sudo service haproxy restart

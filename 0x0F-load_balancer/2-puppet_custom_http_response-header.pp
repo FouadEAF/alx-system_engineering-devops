@@ -1,15 +1,14 @@
-# Installs a Nginx server with custom HTTP header
+# Update package repositories using apt::update
+include apt
 
-# Update package repositories
-exec { 'update':
-  command => '/usr/bin/apt-get -y update',
-  path    => ['/usr/bin'],
+apt::update { 'update':
+  before => Package['nginx'],
 }
 
 # Install Nginx package
 package { 'nginx':
   ensure  => 'latest',
-  require => Exec['update'],
+  require => Apt::Update['update'],
 }
 
 # Configure Nginx with custom HTTP header
@@ -21,7 +20,7 @@ file { '/etc/nginx/nginx.conf':
 
 # Ensure Nginx service is running and enabled
 service { 'nginx':
-  ensure  => 'running',
-  enable  => true,
+  ensure => 'running',
+  enable => true,
   require => Package['nginx'],
 }

@@ -1,0 +1,11 @@
+[mysqld]
+server-id=1
+log_bin=mysql-bin
+binlog_format=row
+bind-address=0.0.0.0
+binlog-do-db=tyrell_corp
+
+# SSL/TLS settings
+ssl-ca=/path/to/ca.pem
+ssl-cert=/path/to/server-cert.pem
+ssl-key=/path/to/server-key.pem

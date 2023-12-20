@@ -1,0 +1,10 @@
+[mysqld]
+server-id=2
+log_bin=mysql-bin
+binlog_format=row
+bind-address=0.0.0.0
+
+# SSL/TLS settings
+ssl-ca=/path/to/ca.pem
+ssl-cert=/path/to/server-cert.pem
+ssl-key=/path/to/server-key.pem

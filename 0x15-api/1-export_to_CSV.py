@@ -14,7 +14,7 @@ if __name__ == "__main__":
     json_o = res.json()
     name = json_o.get('username')
 
-    todos = '{}todos?userId={}'.format(url, idUser)
+    todos = '{}todos?idUser={}'.format(url, idUser)
     res = requests.get(todos)
     tasks = res.json()
     l_task = []
@@ -25,14 +25,10 @@ if __name__ == "__main__":
                        task.get('title')])
 
     filename = '{}.csv'.format(idUser)
-    with open(filename, mode='w', newline='') as employee_file:
+    with open(filename, mode='w') as employee_file:
         employee_writer = csv.writer(employee_file,
                                      delimiter=',',
                                      quotechar='"',
-                                     quoting=csv.QUOTE_MINIMAL)
-        employee_writer.writerow(['UserID', 'Username', 'Completed', 'Title'])
-
+                                     quoting=csv.QUOTE_ALL)
         for task in l_task:
             employee_writer.writerow(task)
-
-    print("Number of tasks in CSV:", len(l_task))

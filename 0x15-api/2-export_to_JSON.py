@@ -2,9 +2,9 @@
 """ Script that use JSONPlaceholder API to get information about employee
     and export data in JSON format
 """
-import requests
-import sys
 import json
+import sys
+import requests
 
 
 def get_user_data(user_id):

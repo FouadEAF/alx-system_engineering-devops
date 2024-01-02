@@ -14,7 +14,7 @@ if __name__ == "__main__":
     json_o = res.json()
     name = json_o.get('username')
 
-    todos = '{}todos?idUser={}'.format(url, idUser)
+    todos = '{}todos?userId={}'.format(url, idUser)
     res = requests.get(todos)
     tasks = res.json()
     l_task = []

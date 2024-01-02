@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-""" Script that use JSONPlaceholder API to get information about employee
-    and export data in CSV format
-"""
+""" Script that use JSONPlaceholder API to get information about employee """
 import csv
 import requests
 import sys
@@ -32,8 +30,9 @@ if __name__ == "__main__":
                                      delimiter=',',
                                      quotechar='"',
                                      quoting=csv.QUOTE_MINIMAL)
-
         employee_writer.writerow(['UserID', 'Username', 'Completed', 'Title'])
 
         for task in l_task:
             employee_writer.writerow(task)
+
+    print("Number of tasks in CSV:", len(l_task))

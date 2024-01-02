@@ -4,19 +4,6 @@
 """
 import json
 import requests
-import sys
-
-
-def get_user_data(user_id):
-    url = f'https://jsonplaceholder.typicode.com/users/{user_id}'
-    response = requests.get(url)
-    return response.json()
-
-
-def get_user_tasks(user_id):
-    url = f'https://jsonplaceholder.typicode.com/todos?userId={user_id}'
-    response = requests.get(url)
-    return response.json()
 
 
 def export_all_to_json():
@@ -31,7 +18,8 @@ def export_all_to_json():
         user_id = user_data['id']
         username = user_data['username']
 
-        tasks_data = get_user_tasks(user_id)
+        todos_url = f'{url}todos?userId={user_id}'
+        tasks_data = requests.get(todos_url).json()
 
         user_tasks = []
 

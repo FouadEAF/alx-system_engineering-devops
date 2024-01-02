@@ -3,8 +3,8 @@
     and export data in JSON format
 """
 import json
-import sys
 import requests
+import sys
 
 
 def get_user_data(user_id):

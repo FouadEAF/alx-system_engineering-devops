@@ -16,7 +16,7 @@ if __name__ == "__main__":
     json_o = res.json()
     name = json_o.get('username')
 
-    todos = '{}todos?userId={}'.format(url, idUser)  # Corrected the parameter name to 'userId'
+    todos = '{}todos?userId={}'.format(url, idUser)
     res = requests.get(todos)
     tasks = res.json()
     l_task = []
@@ -27,13 +27,13 @@ if __name__ == "__main__":
                        task.get('title')])
 
     filename = '{}.csv'.format(idUser)
-    with open(filename, mode='w', newline='') as employee_file:  # Added 'newline=' argument
+    with open(filename, mode='w', newline='') as employee_file:
         employee_writer = csv.writer(employee_file,
                                      delimiter=',',
                                      quotechar='"',
-                                     quoting=csv.QUOTE_MINIMAL)  # Changed to QUOTE_MINIMAL
-        # Write header
+                                     quoting=csv.QUOTE_MINIMAL)
+
         employee_writer.writerow(['UserID', 'Username', 'Completed', 'Title'])
-        
+
         for task in l_task:
             employee_writer.writerow(task)

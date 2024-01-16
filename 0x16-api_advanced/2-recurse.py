@@ -21,8 +21,7 @@ def recurse(subreddit, hot_list=[]):
         )
 
         if response.status_code != 200:
-            print(f"Invalid subreddit or unable to fetch data."
-            f" Status code: {response.status_code}")
+            print(f"Invalid subreddit or unable to fetch data. Status code: {response.status_code}")
             return None
 
         response.raise_for_status()

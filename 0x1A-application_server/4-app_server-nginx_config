@@ -2,7 +2,7 @@ server {
 	listen 80 default_server;
 	listen [::]:80 ipv6only=on default_server;
 	add_header X-Served-By 354632-web-01;
-	server_name localhost;
+	server_name localhost 54.162.36.27;
 
 	root /var/www/html;
 
